@@ -1,3 +1,4 @@
+import 'package:connectly/features/authentication/data/dto/UserData.dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'LoginData.dto.freezed.dart';
@@ -6,8 +7,8 @@ part 'LoginData.dto.g.dart';
 @freezed
 class LoginDatasDto with _$LoginDatasDto {
   const factory LoginDatasDto({
-    required String username,
-    required String password,
+    required String token,
+    required UserDataDto user,
   }) = _LoginDatasDto;
 
   const LoginDatasDto._();
@@ -17,8 +18,8 @@ class LoginDatasDto with _$LoginDatasDto {
 
   Map<String, dynamic> toPersistence() {
     return <String, dynamic>{
-      'username': username,
-      'password': password,
+      'token': token,
+      'user': user,
     };
   }
 }

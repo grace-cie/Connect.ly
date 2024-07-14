@@ -3,6 +3,13 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+class SystemFontScale {
+  static const String SYSTEMFONTSCALE_SMALL = 'Small';
+  static const String SYSTEMFONTSCALE_DEFAULT = 'Default';
+  static const String SYSTEMFONTSCALE_LARGE = 'Large';
+  static const String SYSTEMFONTSCALE_LARGEST = 'Largest';
+}
+
 class CacheKeys {
   /// auth keys
   ///
@@ -22,6 +29,15 @@ class ScreenRoute {
   /// Root paths should start with a "/"
   ///
   static const String INITIAL_ROUTE = '/';
+  static const String LOGIN_ROUTE = '/LoginPage';
+  static const String HOME_ROUTE = '/HomePage';
+
+  /// Nested
+  /// Sub root paths should not start with a "/"
+  static const String FEED_ROUTE = 'Feed';
+  static const String CHAT_ROUTE = 'ChatPage';
+  static const String NOTIFICATION_ROUTE = 'NotificationPage';
+  static const String MENU_ROUTE = 'MenuPage';
 }
 
 abstract class Config {

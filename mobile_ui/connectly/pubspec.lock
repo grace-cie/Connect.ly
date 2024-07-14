@@ -326,54 +326,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_image_compress:
-    dependency: "direct main"
-    description:
-      name: flutter_image_compress
-      sha256: "45a3071868092a61b11044c70422b04d39d4d9f2ef536f3c5b11fb65a1e7dd90"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.0"
-  flutter_image_compress_common:
-    dependency: transitive
-    description:
-      name: flutter_image_compress_common
-      sha256: "7f79bc6c8a363063620b4e372fa86bc691e1cb28e58048cd38e030692fbd99ee"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
-  flutter_image_compress_macos:
-    dependency: transitive
-    description:
-      name: flutter_image_compress_macos
-      sha256: "26df6385512e92b3789dc76b613b54b55c457a7f1532e59078b04bf189782d47"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
-  flutter_image_compress_ohos:
-    dependency: transitive
-    description:
-      name: flutter_image_compress_ohos
-      sha256: e76b92bbc830ee08f5b05962fc78a532011fcd2041f620b5400a593e96da3f51
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
-  flutter_image_compress_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_image_compress_platform_interface
-      sha256: "579cb3947fd4309103afe6442a01ca01e1e6f93dc53bb4cbd090e8ce34a41889"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
-  flutter_image_compress_web:
-    dependency: transitive
-    description:
-      name: flutter_image_compress_web
-      sha256: f02fe352b17f82b72f481de45add240db062a2585850bea1667e82cc4cd6c311
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.4+1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -488,6 +440,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: "2776c66b3e97c6cdd58d1bd3281548b074b64f1fd5c8f82391f7456e38849567"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.5"
   graphs:
     dependency: transitive
     description:
@@ -680,6 +640,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  loading_animation_widget:
+    dependency: "direct main"
+    description:
+      name: loading_animation_widget
+      sha256: ee3659035528d19145d50cf0107632bf647e7306c88b6a32f35f3bed63f6d728
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   logging:
     dependency: transitive
     description:
@@ -720,6 +688,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  mixpanel_flutter:
+    dependency: "direct main"
+    description:
+      name: mixpanel_flutter
+      sha256: "5dc993ade5eaad51ebb6c91230971a3443ac30a3d1d24399bc3db74c5705d400"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   nested:
     dependency: transitive
     description:

@@ -3,6 +3,7 @@ import 'package:connectly/dic/injection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio_http/dio_http.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @module
@@ -21,4 +22,8 @@ abstract class DIContainer {
     dio.interceptors.add(getIt<AuthenticationInterceptor>());
     return dio;
   }
+
+  @lazySingleton
+  InternetConnectionChecker get internetConnectionChecker =>
+      InternetConnectionChecker();
 }
