@@ -20,8 +20,8 @@ LoginDatasDto _$LoginDatasDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginDatasDto {
-  String get username => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String get token => throw _privateConstructorUsedError;
+  UserDataDto get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,9 @@ abstract class $LoginDatasDtoCopyWith<$Res> {
           LoginDatasDto value, $Res Function(LoginDatasDto) then) =
       _$LoginDatasDtoCopyWithImpl<$Res, LoginDatasDto>;
   @useResult
-  $Res call({String username, String password});
+  $Res call({String token, UserDataDto user});
+
+  $UserDataDtoCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -51,19 +53,27 @@ class _$LoginDatasDtoCopyWithImpl<$Res, $Val extends LoginDatasDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? password = null,
+    Object? token = null,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserDataDto,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDataDtoCopyWith<$Res> get user {
+    return $UserDataDtoCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -75,7 +85,10 @@ abstract class _$$LoginDatasDtoImplCopyWith<$Res>
       __$$LoginDatasDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String password});
+  $Res call({String token, UserDataDto user});
+
+  @override
+  $UserDataDtoCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -89,18 +102,18 @@ class __$$LoginDatasDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? password = null,
+    Object? token = null,
+    Object? user = null,
   }) {
     return _then(_$LoginDatasDtoImpl(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserDataDto,
     ));
   }
 }
@@ -108,20 +121,20 @@ class __$$LoginDatasDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginDatasDtoImpl extends _LoginDatasDto {
-  const _$LoginDatasDtoImpl({required this.username, required this.password})
+  const _$LoginDatasDtoImpl({required this.token, required this.user})
       : super._();
 
   factory _$LoginDatasDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginDatasDtoImplFromJson(json);
 
   @override
-  final String username;
+  final String token;
   @override
-  final String password;
+  final UserDataDto user;
 
   @override
   String toString() {
-    return 'LoginDatasDto(username: $username, password: $password)';
+    return 'LoginDatasDto(token: $token, user: $user)';
   }
 
   @override
@@ -129,15 +142,13 @@ class _$LoginDatasDtoImpl extends _LoginDatasDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginDatasDtoImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, username, password);
+  int get hashCode => Object.hash(runtimeType, token, user);
 
   @JsonKey(ignore: true)
   @override
@@ -155,17 +166,17 @@ class _$LoginDatasDtoImpl extends _LoginDatasDto {
 
 abstract class _LoginDatasDto extends LoginDatasDto {
   const factory _LoginDatasDto(
-      {required final String username,
-      required final String password}) = _$LoginDatasDtoImpl;
+      {required final String token,
+      required final UserDataDto user}) = _$LoginDatasDtoImpl;
   const _LoginDatasDto._() : super._();
 
   factory _LoginDatasDto.fromJson(Map<String, dynamic> json) =
       _$LoginDatasDtoImpl.fromJson;
 
   @override
-  String get username;
+  String get token;
   @override
-  String get password;
+  UserDataDto get user;
   @override
   @JsonKey(ignore: true)
   _$$LoginDatasDtoImplCopyWith<_$LoginDatasDtoImpl> get copyWith =>

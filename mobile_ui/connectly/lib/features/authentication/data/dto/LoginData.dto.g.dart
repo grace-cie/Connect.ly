@@ -8,12 +8,12 @@ part of 'LoginData.dto.dart';
 
 _$LoginDatasDtoImpl _$$LoginDatasDtoImplFromJson(Map<String, dynamic> json) =>
     _$LoginDatasDtoImpl(
-      username: json['username'] as String,
-      password: json['password'] as String,
+      token: json['token'] as String,
+      user: UserDataDto.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LoginDatasDtoImplToJson(_$LoginDatasDtoImpl instance) =>
     <String, dynamic>{
-      'username': instance.username,
-      'password': instance.password,
+      'token': instance.token,
+      'user': instance.user,
     };

@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthEvent {
-  LoginDatasDto get loginData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginDatasDto loginData) loginUser,
+    required TResult Function() connnectServer,
+    required TResult Function(LoginUserDto loginUserDto) loginUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginDatasDto loginData)? loginUser,
+    TResult? Function()? connnectServer,
+    TResult? Function(LoginUserDto loginUserDto)? loginUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginDatasDto loginData)? loginUser,
+    TResult Function()? connnectServer,
+    TResult Function(LoginUserDto loginUserDto)? loginUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ConnnectServer value) connnectServer,
     required TResult Function(_LoginUser value) loginUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConnnectServer value)? connnectServer,
     TResult? Function(_LoginUser value)? loginUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnnectServer value)? connnectServer,
     TResult Function(_LoginUser value)? loginUser,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AuthEventCopyWith<AuthEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -59,10 +60,6 @@ mixin _$AuthEvent {
 abstract class $AuthEventCopyWith<$Res> {
   factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
       _$AuthEventCopyWithImpl<$Res, AuthEvent>;
-  @useResult
-  $Res call({LoginDatasDto loginData});
-
-  $LoginDatasDtoCopyWith<$Res> get loginData;
 }
 
 /// @nodoc
@@ -74,41 +71,117 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? loginData = null,
-  }) {
-    return _then(_value.copyWith(
-      loginData: null == loginData
-          ? _value.loginData
-          : loginData // ignore: cast_nullable_to_non_nullable
-              as LoginDatasDto,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LoginDatasDtoCopyWith<$Res> get loginData {
-    return $LoginDatasDtoCopyWith<$Res>(_value.loginData, (value) {
-      return _then(_value.copyWith(loginData: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$LoginUserImplCopyWith<$Res>
-    implements $AuthEventCopyWith<$Res> {
+abstract class _$$ConnnectServerImplCopyWith<$Res> {
+  factory _$$ConnnectServerImplCopyWith(_$ConnnectServerImpl value,
+          $Res Function(_$ConnnectServerImpl) then) =
+      __$$ConnnectServerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ConnnectServerImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ConnnectServerImpl>
+    implements _$$ConnnectServerImplCopyWith<$Res> {
+  __$$ConnnectServerImplCopyWithImpl(
+      _$ConnnectServerImpl _value, $Res Function(_$ConnnectServerImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ConnnectServerImpl implements _ConnnectServer {
+  const _$ConnnectServerImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.connnectServer()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ConnnectServerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connnectServer,
+    required TResult Function(LoginUserDto loginUserDto) loginUser,
+  }) {
+    return connnectServer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connnectServer,
+    TResult? Function(LoginUserDto loginUserDto)? loginUser,
+  }) {
+    return connnectServer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connnectServer,
+    TResult Function(LoginUserDto loginUserDto)? loginUser,
+    required TResult orElse(),
+  }) {
+    if (connnectServer != null) {
+      return connnectServer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ConnnectServer value) connnectServer,
+    required TResult Function(_LoginUser value) loginUser,
+  }) {
+    return connnectServer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConnnectServer value)? connnectServer,
+    TResult? Function(_LoginUser value)? loginUser,
+  }) {
+    return connnectServer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnnectServer value)? connnectServer,
+    TResult Function(_LoginUser value)? loginUser,
+    required TResult orElse(),
+  }) {
+    if (connnectServer != null) {
+      return connnectServer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConnnectServer implements AuthEvent {
+  const factory _ConnnectServer() = _$ConnnectServerImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginUserImplCopyWith<$Res> {
   factory _$$LoginUserImplCopyWith(
           _$LoginUserImpl value, $Res Function(_$LoginUserImpl) then) =
       __$$LoginUserImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({LoginDatasDto loginData});
-
-  @override
-  $LoginDatasDtoCopyWith<$Res> get loginData;
+  $Res call({LoginUserDto loginUserDto});
 }
 
 /// @nodoc
@@ -122,13 +195,13 @@ class __$$LoginUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginData = null,
+    Object? loginUserDto = null,
   }) {
     return _then(_$LoginUserImpl(
-      loginData: null == loginData
-          ? _value.loginData
-          : loginData // ignore: cast_nullable_to_non_nullable
-              as LoginDatasDto,
+      loginUserDto: null == loginUserDto
+          ? _value.loginUserDto
+          : loginUserDto // ignore: cast_nullable_to_non_nullable
+              as LoginUserDto,
     ));
   }
 }
@@ -136,14 +209,14 @@ class __$$LoginUserImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginUserImpl implements _LoginUser {
-  const _$LoginUserImpl({required this.loginData});
+  const _$LoginUserImpl({required this.loginUserDto});
 
   @override
-  final LoginDatasDto loginData;
+  final LoginUserDto loginUserDto;
 
   @override
   String toString() {
-    return 'AuthEvent.loginUser(loginData: $loginData)';
+    return 'AuthEvent.loginUser(loginUserDto: $loginUserDto)';
   }
 
   @override
@@ -151,12 +224,12 @@ class _$LoginUserImpl implements _LoginUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginUserImpl &&
-            (identical(other.loginData, loginData) ||
-                other.loginData == loginData));
+            (identical(other.loginUserDto, loginUserDto) ||
+                other.loginUserDto == loginUserDto));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginData);
+  int get hashCode => Object.hash(runtimeType, loginUserDto);
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +240,30 @@ class _$LoginUserImpl implements _LoginUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginDatasDto loginData) loginUser,
+    required TResult Function() connnectServer,
+    required TResult Function(LoginUserDto loginUserDto) loginUser,
   }) {
-    return loginUser(loginData);
+    return loginUser(loginUserDto);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginDatasDto loginData)? loginUser,
+    TResult? Function()? connnectServer,
+    TResult? Function(LoginUserDto loginUserDto)? loginUser,
   }) {
-    return loginUser?.call(loginData);
+    return loginUser?.call(loginUserDto);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginDatasDto loginData)? loginUser,
+    TResult Function()? connnectServer,
+    TResult Function(LoginUserDto loginUserDto)? loginUser,
     required TResult orElse(),
   }) {
     if (loginUser != null) {
-      return loginUser(loginData);
+      return loginUser(loginUserDto);
     }
     return orElse();
   }
@@ -195,6 +271,7 @@ class _$LoginUserImpl implements _LoginUser {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ConnnectServer value) connnectServer,
     required TResult Function(_LoginUser value) loginUser,
   }) {
     return loginUser(this);
@@ -203,6 +280,7 @@ class _$LoginUserImpl implements _LoginUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConnnectServer value)? connnectServer,
     TResult? Function(_LoginUser value)? loginUser,
   }) {
     return loginUser?.call(this);
@@ -211,6 +289,7 @@ class _$LoginUserImpl implements _LoginUser {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnnectServer value)? connnectServer,
     TResult Function(_LoginUser value)? loginUser,
     required TResult orElse(),
   }) {
@@ -222,12 +301,10 @@ class _$LoginUserImpl implements _LoginUser {
 }
 
 abstract class _LoginUser implements AuthEvent {
-  const factory _LoginUser({required final LoginDatasDto loginData}) =
+  const factory _LoginUser({required final LoginUserDto loginUserDto}) =
       _$LoginUserImpl;
 
-  @override
-  LoginDatasDto get loginData;
-  @override
+  LoginUserDto get loginUserDto;
   @JsonKey(ignore: true)
   _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -235,6 +312,7 @@ abstract class _LoginUser implements AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
+  LoginDatasDto? get loginDatas => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   NavigatePage get navigatePage => throw _privateConstructorUsedError;
@@ -251,10 +329,13 @@ abstract class $AuthStateCopyWith<$Res> {
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
   $Res call(
-      {String? errorMessage,
+      {LoginDatasDto? loginDatas,
+      String? errorMessage,
       StateStatus stateStatus,
       NavigatePage navigatePage,
       AuthStatus authStatus});
+
+  $LoginDatasDtoCopyWith<$Res>? get loginDatas;
 }
 
 /// @nodoc
@@ -270,12 +351,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? loginDatas = freezed,
     Object? errorMessage = freezed,
     Object? stateStatus = null,
     Object? navigatePage = null,
     Object? authStatus = null,
   }) {
     return _then(_value.copyWith(
+      loginDatas: freezed == loginDatas
+          ? _value.loginDatas
+          : loginDatas // ignore: cast_nullable_to_non_nullable
+              as LoginDatasDto?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -294,6 +380,18 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
               as AuthStatus,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginDatasDtoCopyWith<$Res>? get loginDatas {
+    if (_value.loginDatas == null) {
+      return null;
+    }
+
+    return $LoginDatasDtoCopyWith<$Res>(_value.loginDatas!, (value) {
+      return _then(_value.copyWith(loginDatas: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -305,10 +403,14 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? errorMessage,
+      {LoginDatasDto? loginDatas,
+      String? errorMessage,
       StateStatus stateStatus,
       NavigatePage navigatePage,
       AuthStatus authStatus});
+
+  @override
+  $LoginDatasDtoCopyWith<$Res>? get loginDatas;
 }
 
 /// @nodoc
@@ -322,12 +424,17 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? loginDatas = freezed,
     Object? errorMessage = freezed,
     Object? stateStatus = null,
     Object? navigatePage = null,
     Object? authStatus = null,
   }) {
     return _then(_$AuthStateImpl(
+      loginDatas: freezed == loginDatas
+          ? _value.loginDatas
+          : loginDatas // ignore: cast_nullable_to_non_nullable
+              as LoginDatasDto?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -352,11 +459,14 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {this.errorMessage,
+      {required this.loginDatas,
+      this.errorMessage,
       required this.stateStatus,
       required this.navigatePage,
       required this.authStatus});
 
+  @override
+  final LoginDatasDto? loginDatas;
   @override
   final String? errorMessage;
   @override
@@ -368,7 +478,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(errorMessage: $errorMessage, stateStatus: $stateStatus, navigatePage: $navigatePage, authStatus: $authStatus)';
+    return 'AuthState(loginDatas: $loginDatas, errorMessage: $errorMessage, stateStatus: $stateStatus, navigatePage: $navigatePage, authStatus: $authStatus)';
   }
 
   @override
@@ -376,6 +486,8 @@ class _$AuthStateImpl implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
+            (identical(other.loginDatas, loginDatas) ||
+                other.loginDatas == loginDatas) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.stateStatus, stateStatus) ||
@@ -387,8 +499,8 @@ class _$AuthStateImpl implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, errorMessage, stateStatus, navigatePage, authStatus);
+  int get hashCode => Object.hash(runtimeType, loginDatas, errorMessage,
+      stateStatus, navigatePage, authStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -399,11 +511,14 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {final String? errorMessage,
+      {required final LoginDatasDto? loginDatas,
+      final String? errorMessage,
       required final StateStatus stateStatus,
       required final NavigatePage navigatePage,
       required final AuthStatus authStatus}) = _$AuthStateImpl;
 
+  @override
+  LoginDatasDto? get loginDatas;
   @override
   String? get errorMessage;
   @override
