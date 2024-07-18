@@ -5,6 +5,8 @@ import 'package:connectly/features/authentication/data/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -18,7 +20,7 @@ class HomeNavPage {
   const HomeNavPage({required this.screenRoute, required this.navItem});
 
   final PageRouteInfo<dynamic> screenRoute;
-  final BottomNavigationBarItem navItem;
+  final SalomonBottomBarItem navItem;
 }
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
@@ -30,6 +32,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   late MediaQueryData _mediaQuery;
   late bool _isSmallScreen;
+
   @override
   void initState() {
     super.initState();
@@ -68,7 +71,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   routes: routes,
                   builder: (BuildContext context, Widget child) {
                     tabsRouter = AutoTabsRouter.of(context);
-                    print(child);
                     return Scaffold(
                       backgroundColor: Colors.transparent,
                       appBar: _appBar,
@@ -87,7 +89,16 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                           )
                         ],
                       ),
-                      bottomNavigationBar: _bottomNavigation,
+                      bottomNavigationBar: Container(
+                          decoration: const BoxDecoration(
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                color: Colors.black,
+                                blurRadius: 1,
+                              ),
+                            ],
+                          ),
+                          child: _bottomNavigation),
                     );
                   },
                 ),
@@ -106,24 +117,31 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   BoxDecoration _mainContainerDecoration() {
-    return BoxDecoration(
-        color: Colors.grey,
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: <Color>[
-              _theme.primaryColorLight,
-              _theme.primaryColorDark,
-            ]));
+    return const BoxDecoration(
+      color: Colors.grey,
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: <Color>[
+          // _theme.primaryColorLight,
+          // _theme.primaryColorDark,
+          Colors.white,
+          Colors.white
+        ],
+      ),
+    );
   }
 
   PreferredSizeWidget get _appBar {
     return AppBar(
-      leading: Image.asset(
-        'assets/images/connect.ly-word-logo2.png',
-        scale: 2,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          'assets/images/connect.ly-word-logo2.png',
+          scale: 2,
+        ),
       ),
-      leadingWidth: 50,
+      leadingWidth: 100,
       backgroundColor: _theme.canvasColor,
       elevation: 0.0,
       automaticallyImplyLeading: false,
@@ -137,35 +155,31 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: GestureDetector(
-          key: const ValueKey<String>('search-button-key'),
-          // onTap: _showSearch,
-          child: const Icon(
-            Icons.search,
-            size: 26,
-            color: Colors.black,
-          )),
+        key: const ValueKey<String>('search-button-key'),
+        // onTap: _showSearch,
+        child: const Icon(
+          FluentIcons.search_12_filled,
+          size: 26,
+          color: Colors.black,
+        ),
+      ),
     );
   }
 
   Widget get _bottomNavigation {
-    final List<BottomNavigationBarItem> connectlyNavItems =
-        <BottomNavigationBarItem>[
-      ..._connectlyTabScreens().map((HomeNavPage e) {
-        return e.navItem;
-      })
-    ];
+    final List<SalomonBottomBarItem> connectlyNavItems =
+        _connectlyTabScreens().map((HomeNavPage e) {
+      return e.navItem;
+    }).toList();
 
-    final List<BottomNavigationBarItem> items = connectlyNavItems;
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.zero,
       margin: EdgeInsets.zero,
-      child: BottomNavigationBar(
+      child: SalomonBottomBar(
         currentIndex: tabsRouter.activeIndex,
-        items: items,
-        showUnselectedLabels: true,
-        selectedFontSize: 12,
-        type: BottomNavigationBarType.fixed,
         onTap: _selectNavOption,
+        items: connectlyNavItems,
       ),
     );
   }
@@ -192,42 +206,52 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   /// Bottom Navigation Items
-  /// For UpTape package
-  BottomNavigationBarItem get _feedNavItem =>
-      BottomNavigationBarItem(icon: _feedNavIcon, label: 'Feed');
-  BottomNavigationBarItem get _chatsLogNavItem =>
-      BottomNavigationBarItem(icon: _chatsLogNavIcon, label: 'Chats');
-  BottomNavigationBarItem get _notificationsNavItem => BottomNavigationBarItem(
-      icon: _notificationsNavIcon, label: 'Notifications');
-  BottomNavigationBarItem get _menuNavItem =>
-      BottomNavigationBarItem(icon: _menuNavIcon, label: 'Menu');
+  SalomonBottomBarItem get _feedNavItem => SalomonBottomBarItem(
+        icon: _feedNavIcon,
+        title: const Text('Feed'),
+        selectedColor: _theme.primaryColor,
+      );
+
+  SalomonBottomBarItem get _chatsLogNavItem => SalomonBottomBarItem(
+        icon: _chatsLogNavIcon,
+        title: const Text('Chats'),
+        selectedColor: _theme.primaryColor,
+      );
+
+  SalomonBottomBarItem get _notificationsNavItem => SalomonBottomBarItem(
+        icon: _notificationsNavIcon,
+        title: const Text('Notifications'),
+        selectedColor: _theme.primaryColor,
+      );
+
+  SalomonBottomBarItem get _menuNavItem => SalomonBottomBarItem(
+        icon: _menuNavIcon,
+        title: const Text('Menu'),
+        selectedColor: _theme.primaryColor,
+      );
 
   Widget get _feedNavIcon {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: const Icon(Icons.home_rounded),
-    );
+    return Icon(tabsRouter.activeIndex == 0
+        ? FluentIcons.home_12_filled
+        : FluentIcons.home_12_regular);
   }
 
   Widget get _chatsLogNavIcon {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: const Icon(Icons.chat_bubble_rounded),
-    );
+    return Icon(tabsRouter.activeIndex == 1
+        ? FluentIcons.chat_12_filled
+        : FluentIcons.chat_12_regular);
   }
 
   Widget get _notificationsNavIcon {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: const Icon(Icons.notifications_rounded),
-    );
+    return Icon(tabsRouter.activeIndex == 2
+        ? FluentIcons.alert_12_filled
+        : FluentIcons.alert_12_regular);
   }
 
   Widget get _menuNavIcon {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: const Icon(Icons.menu),
-    );
+    return Icon(tabsRouter.activeIndex == 3
+        ? FluentIcons.line_horizontal_3_20_filled
+        : FluentIcons.line_horizontal_3_20_regular);
   }
 
   void _selectNavOption(int i) {

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:connectly/core/widgets/templates/base_body.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -17,11 +18,14 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Text('Notification Page'),
-        ),
+    return BaseBody(
+      child: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.red,
+            child: Text('hello'),
+          )
+        ],
       ),
     );
   }
