@@ -11,8 +11,7 @@ ServerException checkErrResponse(Response<dynamic>? res) {
   late String result;
 
   if (res?.data?['errors'] != null) {
-    final String details =
-        res?.data['errors'][0]['detail'] ?? res?.data['errors'][0]['details'];
+    final String details = res?.data['errors']['errorMessage'];
 
     return ServerException(details);
   }

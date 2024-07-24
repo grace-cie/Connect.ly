@@ -5,7 +5,10 @@ import 'package:connectly/core/logic/state_status.dart';
 import 'package:connectly/core/router/app_router.dart';
 import 'package:connectly/dic/injection.dart';
 import 'package:connectly/features/authentication/data/bloc/auth_bloc.dart';
+import 'package:connectly/features/authentication/usecase/auto_login.usecase.dart';
 import 'package:connectly/features/authentication/usecase/connect_server.usecase.dart';
+import 'package:connectly/features/authentication/usecase/segment/dispose_segment_listener.dart';
+import 'package:connectly/features/authentication/usecase/segment/listen_segment_stream.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +25,10 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage> {
   late AuthBloc _authBloc;
 
+  late ListenSegmentStreamUsecase _listenSegmentStreamUsecase;
+  late DisposeSegmentListenerUsecase _disposeSegmentListenerUsecase;
   late ConnectServerUsecase _connectServerUsecase;
+  late AutoLoginUserUsecase _autoLoginUserUsecase;
 
   late StackRouter _router;
 
@@ -31,11 +37,22 @@ class _InitialPageState extends State<InitialPage> {
     _router = AutoRouter.of(context);
     _authBloc = getIt<AuthBloc>();
 
+    _listenSegmentStreamUsecase = getIt<ListenSegmentStreamUsecase>();
+    _disposeSegmentListenerUsecase = getIt<DisposeSegmentListenerUsecase>();
     _connectServerUsecase = getIt<ConnectServerUsecase>();
+    _autoLoginUserUsecase = getIt<AutoLoginUserUsecase>();
 
+    _listenSegmentStreamUsecase.execute(context);
     _connectServerUsecase.execute();
+    _autoLoginUserUsecase.execute();
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _disposeSegmentListenerUsecase.execute();
+    super.dispose();
   }
 
   @override

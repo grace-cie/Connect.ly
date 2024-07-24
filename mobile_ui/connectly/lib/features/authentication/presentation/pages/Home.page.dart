@@ -90,15 +90,16 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                         ],
                       ),
                       bottomNavigationBar: Container(
-                          decoration: const BoxDecoration(
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: Colors.black,
-                                blurRadius: 1,
-                              ),
-                            ],
-                          ),
-                          child: _bottomNavigation),
+                        decoration: const BoxDecoration(
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              color: Colors.black,
+                              blurRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: _bottomNavigation,
+                      ),
                     );
                   },
                 ),
@@ -123,10 +124,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: <Color>[
-          // _theme.primaryColorLight,
-          // _theme.primaryColorDark,
-          Colors.white,
-          Colors.white
+          Colors.transparent,
+          Colors.transparent,
         ],
       ),
     );
@@ -141,9 +140,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           scale: 2,
         ),
       ),
-      leadingWidth: 100,
-      backgroundColor: _theme.canvasColor,
-      elevation: 0.0,
+      leadingWidth: 130,
+      backgroundColor: Colors.white,
+      elevation: 1.0,
       automaticallyImplyLeading: false,
       actions: [
         _searchAction,
@@ -208,50 +207,82 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   /// Bottom Navigation Items
   SalomonBottomBarItem get _feedNavItem => SalomonBottomBarItem(
         icon: _feedNavIcon,
-        title: const Text('Feed'),
+        activeIcon: _feedNavIconActive,
+        title: const Text(
+          'Feed',
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
         selectedColor: _theme.primaryColor,
       );
 
   SalomonBottomBarItem get _chatsLogNavItem => SalomonBottomBarItem(
         icon: _chatsLogNavIcon,
-        title: const Text('Chats'),
+        activeIcon: _chatsLogNavIconActive,
+        title: const Text(
+          'Chats',
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
         selectedColor: _theme.primaryColor,
       );
 
   SalomonBottomBarItem get _notificationsNavItem => SalomonBottomBarItem(
         icon: _notificationsNavIcon,
-        title: const Text('Notifications'),
+        activeIcon: _notificationsNavIconActive,
+        title: const Text(
+          'Notifications',
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
         selectedColor: _theme.primaryColor,
       );
 
   SalomonBottomBarItem get _menuNavItem => SalomonBottomBarItem(
         icon: _menuNavIcon,
-        title: const Text('Menu'),
+        activeIcon: _menuNavIconActive,
+        title: const Text(
+          'Menu',
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
         selectedColor: _theme.primaryColor,
       );
 
   Widget get _feedNavIcon {
-    return Icon(tabsRouter.activeIndex == 0
-        ? FluentIcons.home_12_filled
-        : FluentIcons.home_12_regular);
+    return const Icon(FluentIcons.home_12_regular);
   }
 
   Widget get _chatsLogNavIcon {
-    return Icon(tabsRouter.activeIndex == 1
-        ? FluentIcons.chat_12_filled
-        : FluentIcons.chat_12_regular);
+    return const Icon(FluentIcons.chat_12_regular);
   }
 
   Widget get _notificationsNavIcon {
-    return Icon(tabsRouter.activeIndex == 2
-        ? FluentIcons.alert_12_filled
-        : FluentIcons.alert_12_regular);
+    return const Icon(FluentIcons.alert_12_regular);
   }
 
   Widget get _menuNavIcon {
-    return Icon(tabsRouter.activeIndex == 3
-        ? FluentIcons.line_horizontal_3_20_filled
-        : FluentIcons.line_horizontal_3_20_regular);
+    return const Icon(FluentIcons.line_horizontal_3_20_regular);
+  }
+
+  Widget get _feedNavIconActive {
+    return const Icon(FluentIcons.home_12_filled);
+  }
+
+  Widget get _chatsLogNavIconActive {
+    return const Icon(FluentIcons.chat_12_filled);
+  }
+
+  Widget get _notificationsNavIconActive {
+    return const Icon(FluentIcons.alert_12_filled);
+  }
+
+  Widget get _menuNavIconActive {
+    return const Icon(FluentIcons.line_horizontal_3_20_filled);
   }
 
   void _selectNavOption(int i) {

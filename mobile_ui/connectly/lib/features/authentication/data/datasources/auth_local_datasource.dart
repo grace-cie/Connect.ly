@@ -11,6 +11,8 @@ abstract class AuthLocalDatasource {
   Future<Unit> saveCredentials(LoginUserDto loginData);
   Unit saveUser(String userId);
   Unit saveToken(String token);
+  Future<LoginUserDto> getCredentials();
+  Unit deleteCredetialsAndTokens();
 }
 
 @LazySingleton(as: AuthLocalDatasource)
@@ -53,6 +55,33 @@ class AuthLocalDatasourceImpl implements AuthLocalDatasource {
       return unit;
     } catch (e) {
       throw CacheException(ERR_SAVE_TOKEN);
+    }
+  }
+
+  @override
+  Future<LoginUserDto> getCredentials() async {
+    try {
+      final String? username =
+          await flutterSecureStorage.read(key: CacheKeys.LOGGED_USERNAME);
+      final String? password =
+          await flutterSecureStorage.read(key: CacheKeys.LOGGED_PASSWORD);
+
+      final LoginUserDto loginDatasDto =
+          LoginUserDto(username: username ?? '', password: password ?? '');
+      return loginDatasDto;
+    } catch (e) {
+      throw CacheException(ERR_GET_CREDENTIALS);
+    }
+  }
+
+  @override
+  Unit deleteCredetialsAndTokens() {
+    try {
+      flutterSecureStorage.delete(key: CacheKeys.LOGGED_USERNAME);
+      flutterSecureStorage.delete(key: CacheKeys.LOGGED_PASSWORD);
+      return unit;
+    } catch (e) {
+      throw CacheException(ERR_DEFAULT);
     }
   }
 }

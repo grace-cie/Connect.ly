@@ -20,18 +20,24 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() connnectServer,
     required TResult Function(LoginUserDto loginUserDto) loginUser,
+    required TResult Function() autoLoginUser,
+    required TResult Function() logoutUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connnectServer,
     TResult? Function(LoginUserDto loginUserDto)? loginUser,
+    TResult? Function()? autoLoginUser,
+    TResult? Function()? logoutUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connnectServer,
     TResult Function(LoginUserDto loginUserDto)? loginUser,
+    TResult Function()? autoLoginUser,
+    TResult Function()? logoutUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_ConnnectServer value) connnectServer,
     required TResult Function(_LoginUser value) loginUser,
+    required TResult Function(_AutoLoginUser value) autoLoginUser,
+    required TResult Function(_LogoutUser value) logoutUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ConnnectServer value)? connnectServer,
     TResult? Function(_LoginUser value)? loginUser,
+    TResult? Function(_AutoLoginUser value)? autoLoginUser,
+    TResult? Function(_LogoutUser value)? logoutUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ConnnectServer value)? connnectServer,
     TResult Function(_LoginUser value)? loginUser,
+    TResult Function(_AutoLoginUser value)? autoLoginUser,
+    TResult Function(_LogoutUser value)? logoutUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +125,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult when<TResult extends Object?>({
     required TResult Function() connnectServer,
     required TResult Function(LoginUserDto loginUserDto) loginUser,
+    required TResult Function() autoLoginUser,
+    required TResult Function() logoutUser,
   }) {
     return connnectServer();
   }
@@ -122,6 +136,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connnectServer,
     TResult? Function(LoginUserDto loginUserDto)? loginUser,
+    TResult? Function()? autoLoginUser,
+    TResult? Function()? logoutUser,
   }) {
     return connnectServer?.call();
   }
@@ -131,6 +147,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connnectServer,
     TResult Function(LoginUserDto loginUserDto)? loginUser,
+    TResult Function()? autoLoginUser,
+    TResult Function()? logoutUser,
     required TResult orElse(),
   }) {
     if (connnectServer != null) {
@@ -144,6 +162,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult map<TResult extends Object?>({
     required TResult Function(_ConnnectServer value) connnectServer,
     required TResult Function(_LoginUser value) loginUser,
+    required TResult Function(_AutoLoginUser value) autoLoginUser,
+    required TResult Function(_LogoutUser value) logoutUser,
   }) {
     return connnectServer(this);
   }
@@ -153,6 +173,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ConnnectServer value)? connnectServer,
     TResult? Function(_LoginUser value)? loginUser,
+    TResult? Function(_AutoLoginUser value)? autoLoginUser,
+    TResult? Function(_LogoutUser value)? logoutUser,
   }) {
     return connnectServer?.call(this);
   }
@@ -162,6 +184,8 @@ class _$ConnnectServerImpl implements _ConnnectServer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ConnnectServer value)? connnectServer,
     TResult Function(_LoginUser value)? loginUser,
+    TResult Function(_AutoLoginUser value)? autoLoginUser,
+    TResult Function(_LogoutUser value)? logoutUser,
     required TResult orElse(),
   }) {
     if (connnectServer != null) {
@@ -242,6 +266,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult when<TResult extends Object?>({
     required TResult Function() connnectServer,
     required TResult Function(LoginUserDto loginUserDto) loginUser,
+    required TResult Function() autoLoginUser,
+    required TResult Function() logoutUser,
   }) {
     return loginUser(loginUserDto);
   }
@@ -251,6 +277,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connnectServer,
     TResult? Function(LoginUserDto loginUserDto)? loginUser,
+    TResult? Function()? autoLoginUser,
+    TResult? Function()? logoutUser,
   }) {
     return loginUser?.call(loginUserDto);
   }
@@ -260,6 +288,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connnectServer,
     TResult Function(LoginUserDto loginUserDto)? loginUser,
+    TResult Function()? autoLoginUser,
+    TResult Function()? logoutUser,
     required TResult orElse(),
   }) {
     if (loginUser != null) {
@@ -273,6 +303,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_ConnnectServer value) connnectServer,
     required TResult Function(_LoginUser value) loginUser,
+    required TResult Function(_AutoLoginUser value) autoLoginUser,
+    required TResult Function(_LogoutUser value) logoutUser,
   }) {
     return loginUser(this);
   }
@@ -282,6 +314,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ConnnectServer value)? connnectServer,
     TResult? Function(_LoginUser value)? loginUser,
+    TResult? Function(_AutoLoginUser value)? autoLoginUser,
+    TResult? Function(_LogoutUser value)? logoutUser,
   }) {
     return loginUser?.call(this);
   }
@@ -291,6 +325,8 @@ class _$LoginUserImpl implements _LoginUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ConnnectServer value)? connnectServer,
     TResult Function(_LoginUser value)? loginUser,
+    TResult Function(_AutoLoginUser value)? autoLoginUser,
+    TResult Function(_LogoutUser value)? logoutUser,
     required TResult orElse(),
   }) {
     if (loginUser != null) {
@@ -308,6 +344,234 @@ abstract class _LoginUser implements AuthEvent {
   @JsonKey(ignore: true)
   _$$LoginUserImplCopyWith<_$LoginUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AutoLoginUserImplCopyWith<$Res> {
+  factory _$$AutoLoginUserImplCopyWith(
+          _$AutoLoginUserImpl value, $Res Function(_$AutoLoginUserImpl) then) =
+      __$$AutoLoginUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AutoLoginUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$AutoLoginUserImpl>
+    implements _$$AutoLoginUserImplCopyWith<$Res> {
+  __$$AutoLoginUserImplCopyWithImpl(
+      _$AutoLoginUserImpl _value, $Res Function(_$AutoLoginUserImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AutoLoginUserImpl implements _AutoLoginUser {
+  const _$AutoLoginUserImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.autoLoginUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AutoLoginUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connnectServer,
+    required TResult Function(LoginUserDto loginUserDto) loginUser,
+    required TResult Function() autoLoginUser,
+    required TResult Function() logoutUser,
+  }) {
+    return autoLoginUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connnectServer,
+    TResult? Function(LoginUserDto loginUserDto)? loginUser,
+    TResult? Function()? autoLoginUser,
+    TResult? Function()? logoutUser,
+  }) {
+    return autoLoginUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connnectServer,
+    TResult Function(LoginUserDto loginUserDto)? loginUser,
+    TResult Function()? autoLoginUser,
+    TResult Function()? logoutUser,
+    required TResult orElse(),
+  }) {
+    if (autoLoginUser != null) {
+      return autoLoginUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ConnnectServer value) connnectServer,
+    required TResult Function(_LoginUser value) loginUser,
+    required TResult Function(_AutoLoginUser value) autoLoginUser,
+    required TResult Function(_LogoutUser value) logoutUser,
+  }) {
+    return autoLoginUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConnnectServer value)? connnectServer,
+    TResult? Function(_LoginUser value)? loginUser,
+    TResult? Function(_AutoLoginUser value)? autoLoginUser,
+    TResult? Function(_LogoutUser value)? logoutUser,
+  }) {
+    return autoLoginUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnnectServer value)? connnectServer,
+    TResult Function(_LoginUser value)? loginUser,
+    TResult Function(_AutoLoginUser value)? autoLoginUser,
+    TResult Function(_LogoutUser value)? logoutUser,
+    required TResult orElse(),
+  }) {
+    if (autoLoginUser != null) {
+      return autoLoginUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AutoLoginUser implements AuthEvent {
+  const factory _AutoLoginUser() = _$AutoLoginUserImpl;
+}
+
+/// @nodoc
+abstract class _$$LogoutUserImplCopyWith<$Res> {
+  factory _$$LogoutUserImplCopyWith(
+          _$LogoutUserImpl value, $Res Function(_$LogoutUserImpl) then) =
+      __$$LogoutUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LogoutUserImpl>
+    implements _$$LogoutUserImplCopyWith<$Res> {
+  __$$LogoutUserImplCopyWithImpl(
+      _$LogoutUserImpl _value, $Res Function(_$LogoutUserImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogoutUserImpl implements _LogoutUser {
+  const _$LogoutUserImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.logoutUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogoutUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connnectServer,
+    required TResult Function(LoginUserDto loginUserDto) loginUser,
+    required TResult Function() autoLoginUser,
+    required TResult Function() logoutUser,
+  }) {
+    return logoutUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connnectServer,
+    TResult? Function(LoginUserDto loginUserDto)? loginUser,
+    TResult? Function()? autoLoginUser,
+    TResult? Function()? logoutUser,
+  }) {
+    return logoutUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connnectServer,
+    TResult Function(LoginUserDto loginUserDto)? loginUser,
+    TResult Function()? autoLoginUser,
+    TResult Function()? logoutUser,
+    required TResult orElse(),
+  }) {
+    if (logoutUser != null) {
+      return logoutUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ConnnectServer value) connnectServer,
+    required TResult Function(_LoginUser value) loginUser,
+    required TResult Function(_AutoLoginUser value) autoLoginUser,
+    required TResult Function(_LogoutUser value) logoutUser,
+  }) {
+    return logoutUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConnnectServer value)? connnectServer,
+    TResult? Function(_LoginUser value)? loginUser,
+    TResult? Function(_AutoLoginUser value)? autoLoginUser,
+    TResult? Function(_LogoutUser value)? logoutUser,
+  }) {
+    return logoutUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnnectServer value)? connnectServer,
+    TResult Function(_LoginUser value)? loginUser,
+    TResult Function(_AutoLoginUser value)? autoLoginUser,
+    TResult Function(_LogoutUser value)? logoutUser,
+    required TResult orElse(),
+  }) {
+    if (logoutUser != null) {
+      return logoutUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogoutUser implements AuthEvent {
+  const factory _LogoutUser() = _$LogoutUserImpl;
 }
 
 /// @nodoc

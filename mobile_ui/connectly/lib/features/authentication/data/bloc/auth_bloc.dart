@@ -41,7 +41,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_LoginUser>((_LoginUser event, Emitter<AuthState> emit) async {
       emit(state.copyWith(stateStatus: StateStatus.loadingState));
 
-      final Result<Either<String, LoginDatasDto>> result =
+      final Result<LoginDatasDto> result =
           await authRepository.loginUser(event.loginUserDto);
 
       if (!result.isSuccess) {
@@ -50,22 +50,53 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           errorMessage: result.getError,
         ));
       } else {
-        final Either<String, LoginDatasDto> eitherResult = result.getValue;
+        emit(state.copyWith(
+          stateStatus: StateStatus.loadedState,
+          authStatus: AuthStatus.authenticated,
+          loginDatas: result.getValue,
+          navigatePage: NavigatePage.homePage,
+        ));
+      }
+    });
 
-        eitherResult.fold((l) {
-          emit(state.copyWith(
-            stateStatus: StateStatus.loadedState,
-            authStatus: AuthStatus.authenticated,
-            errorMessage: l,
-          ));
-        }, (r) {
-          emit(state.copyWith(
-            stateStatus: StateStatus.loadedState,
-            authStatus: AuthStatus.authenticated,
-            loginDatas: r,
-            navigatePage: NavigatePage.homePage,
-          ));
-        });
+    on<_AutoLoginUser>((_AutoLoginUser event, Emitter<AuthState> emit) async {
+      emit(state.copyWith(stateStatus: StateStatus.loadingState));
+
+      final Result<LoginDatasDto> result = await authRepository.autoLoginUser();
+
+      if (!result.isSuccess) {
+        emit(state.copyWith(
+          errorMessage: result.getError,
+          stateStatus: StateStatus.loadedState,
+          authStatus: AuthStatus.unauthenticated,
+        ));
+      } else {
+        emit(state.copyWith(
+          stateStatus: StateStatus.loadedState,
+          authStatus: AuthStatus.authenticated,
+          loginDatas: result.getValue,
+          navigatePage: NavigatePage.homePage,
+        ));
+      }
+    });
+
+    on<_LogoutUser>((_LogoutUser event, Emitter<AuthState> emit) async {
+      emit(state.copyWith(stateStatus: StateStatus.loadingState));
+
+      final Result<Unit> result = await authRepository.logoutUser();
+
+      if (!result.isSuccess) {
+        emit(state.copyWith(
+          errorMessage: result.getError,
+          stateStatus: StateStatus.errorState,
+        ));
+      } else {
+        emit(state.copyWith(
+          stateStatus: StateStatus.loadedState,
+          authStatus: AuthStatus.unauthenticated,
+          loginDatas: null,
+          navigatePage: NavigatePage.loginPage,
+        ));
       }
     });
   }

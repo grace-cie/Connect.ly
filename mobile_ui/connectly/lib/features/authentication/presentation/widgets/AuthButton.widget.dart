@@ -8,10 +8,14 @@ class AuthButtonWidget extends StatelessWidget {
     required this.buttonwidth,
     required this.isLoading,
     required this.login,
+    required this.bgColor,
+    required this.buttonName,
   });
 
   final double buttonwidth;
   final bool isLoading;
+  final String buttonName;
+  final Color bgColor;
   final Function() login;
 
   @override
@@ -32,16 +36,18 @@ class AuthButtonWidget extends StatelessWidget {
           elevation: MaterialStateProperty.all(0),
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) {
-              return const Color(0xFF3897F0);
+              return bgColor;
+
+              //  Color(0xFF3897F0);
             },
           ),
         ),
         child: isLoading
             ? LoadingAnimationWidget.prograssiveDots(
                 color: CustomColor.instagramWhite, size: 40)
-            : const Text(
-                'Login',
-                style: TextStyle(
+            : Text(
+                buttonName,
+                style: const TextStyle(
                   color: CustomColor.instagramWhite,
                   fontSize: 14.0,
                 ),
