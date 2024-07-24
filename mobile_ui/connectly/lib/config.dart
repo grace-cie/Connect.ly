@@ -51,10 +51,11 @@ class ConfigImpl implements Config {
 
   /// Dev Environment
   ///
-  @override
-  String get connectlyService => 'https://connectly-tsku.onrender.com';
+  // @override
+  // String get connectlyService => 'https://connectly-tsku.onrender.com';
 
   /// Local Environment
   ///
-  // String get connectlyService => 'https://localhost:3000';
+  @override
+  String get connectlyService => 'http://192.168.254.108:3000';
 }

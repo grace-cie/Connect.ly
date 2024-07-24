@@ -6,4 +6,8 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.loginUser({
     required LoginUserDto loginUserDto,
   }) = _LoginUser;
+
+  const factory AuthEvent.autoLoginUser() = _AutoLoginUser;
+
+  const factory AuthEvent.logoutUser() = _LogoutUser;
 }

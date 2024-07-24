@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:connectly/core/widgets/templates/base_body.dart';
+import 'package:connectly/core/widgets/templates/sub_appbar_title.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -12,17 +14,18 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   @override
   void initState() {
-    print('NOTIF PAGE');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Text('Notification Page'),
-        ),
+    return const BaseBody(
+      child: Column(
+        children: <Widget>[
+          SubAppbarTitle(
+            title: 'Notifications',
+          )
+        ],
       ),
     );
   }

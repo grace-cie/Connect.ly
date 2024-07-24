@@ -5,7 +5,9 @@ import 'package:dartz/dartz.dart';
 
 abstract class AuthRepository {
   Future<Result<Unit>> connectServer();
-  Future<Result<Either<String, LoginDatasDto>>> loginUser(
+  Future<Result<LoginDatasDto>> loginUser(
     LoginUserDto loginUserDto,
   );
+  Future<Result<LoginDatasDto>> autoLoginUser();
+  Future<Result<Unit>> logoutUser();
 }

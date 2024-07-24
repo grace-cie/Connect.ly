@@ -10,7 +10,7 @@ class BaseBody extends StatelessWidget {
     return Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).canvasColor,
+          color: Colors.grey.shade100,
           border: const Border(
             top: BorderSide(width: 1, color: Colors.black12),
           ),

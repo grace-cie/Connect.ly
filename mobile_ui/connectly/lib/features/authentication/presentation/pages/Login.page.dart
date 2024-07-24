@@ -101,9 +101,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget get _form => BlocBuilder<AuthBloc, AuthState>(
+  Widget get _form => BlocConsumer<AuthBloc, AuthState>(
+        listener: _authListener,
         bloc: _authBloc,
-        builder: (context, state) {
+        builder: (BuildContext context, AuthState state) {
           return Column(
             children: [
               AuthFormWidget(
@@ -134,6 +135,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 16.0),
               AuthButtonWidget(
+                buttonName: 'Login',
+                bgColor: const Color(0xFF3897F0),
                 buttonwidth: width,
                 login: () {
                   if (_userNameCotroller.value.text.isNotEmpty &&
@@ -167,4 +170,12 @@ class _LoginPageState extends State<LoginPage> {
         'assets/images/connect.ly-word-logo2.png',
         scale: 3,
       );
+
+  void _authListener(BuildContext context, AuthState state) {
+    print('STATUS ${state.stateStatus}');
+    if (state.stateStatus == StateStatus.errorState) {
+      showIconSnackBar(context, state.errorMessage ?? '',
+          const Icon(Icons.warning), _systemScale);
+    }
+  }
 }

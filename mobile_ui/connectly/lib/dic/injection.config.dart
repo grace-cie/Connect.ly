@@ -18,21 +18,28 @@ import 'package:shared_preferences/shared_preferences.dart' as _i3;
 
 import '../config.dart' as _i7;
 import '../core/auth/authentication_iterceptor.dart' as _i10;
-import '../core/network/network_info.dart' as _i12;
+import '../core/network/network_info.dart' as _i13;
 import '../core/router/segment.dart' as _i11;
 import '../core/scale/system_scale.dart' as _i8;
-import '../features/authentication/data/bloc/auth_bloc.dart' as _i16;
+import '../features/authentication/data/bloc/auth_bloc.dart' as _i19;
+import '../features/authentication/data/bloc/segment/segment_bloc.dart' as _i12;
 import '../features/authentication/data/datasources/auth_local_datasource.dart'
-    as _i13;
+    as _i14;
 import '../features/authentication/data/datasources/auth_remote_datasource.dart'
     as _i9;
 import '../features/authentication/data/repositories/auth_repository_impl.dart'
-    as _i15;
+    as _i16;
 import '../features/authentication/domain/repositories/auth_repository.dart'
-    as _i14;
-import '../features/authentication/usecase/connect_server.usecase.dart' as _i17;
-import '../features/authentication/usecase/login_user.usecase.dart' as _i18;
-import 'di_container.dart' as _i19;
+    as _i15;
+import '../features/authentication/usecase/auto_login.usecase.dart' as _i23;
+import '../features/authentication/usecase/connect_server.usecase.dart' as _i20;
+import '../features/authentication/usecase/login_user.usecase.dart' as _i21;
+import '../features/authentication/usecase/logout_user.usecase.dart' as _i22;
+import '../features/authentication/usecase/segment/dispose_segment_listener.dart'
+    as _i17;
+import '../features/authentication/usecase/segment/listen_segment_stream.dart'
+    as _i18;
+import 'di_container.dart' as _i24;
 
 const String _prod = 'prod';
 
@@ -68,29 +75,40 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i10.AuthenticationInterceptor>(() =>
         _i10.AuthenticationInterceptor(prefs: gh<_i3.SharedPreferences>()));
     gh.lazySingleton<_i11.Segment>(() => _i11.SegmentImpl());
-    gh.lazySingleton<_i12.NetworkInfo>(() => _i12.NetworkInfoImpl(
+    gh.lazySingleton<_i12.SegmentBloc>(
+        () => _i12.SegmentBloc(gh<_i11.Segment>()));
+    gh.lazySingleton<_i13.NetworkInfo>(() => _i13.NetworkInfoImpl(
         connectionChecker: gh<_i6.InternetConnectionChecker>()));
-    gh.lazySingleton<_i13.AuthLocalDatasource>(
-        () => _i13.AuthLocalDatasourceImpl(
+    gh.lazySingleton<_i14.AuthLocalDatasource>(
+        () => _i14.AuthLocalDatasourceImpl(
               flutterSecureStorage: gh<_i4.FlutterSecureStorage>(),
               sharedPreferences: gh<_i3.SharedPreferences>(),
             ));
-    gh.lazySingleton<_i14.AuthRepository>(
-      () => _i15.AuthRepositoryImpl(
-        networkInfo: gh<_i12.NetworkInfo>(),
+    gh.lazySingleton<_i15.AuthRepository>(
+      () => _i16.AuthRepositoryImpl(
+        networkInfo: gh<_i13.NetworkInfo>(),
         authRemoteDatasource: gh<_i9.AuthRemoteDatasource>(),
-        authLocalDatasource: gh<_i13.AuthLocalDatasource>(),
+        authLocalDatasource: gh<_i14.AuthLocalDatasource>(),
       ),
       registerFor: {_prod},
     );
-    gh.lazySingleton<_i16.AuthBloc>(
-        () => _i16.AuthBloc(authRepository: gh<_i14.AuthRepository>()));
-    gh.factory<_i17.ConnectServerUsecase>(
-        () => _i17.ConnectServerUsecase(authBloc: gh<_i16.AuthBloc>()));
-    gh.factory<_i18.LoginUserUsecase>(
-        () => _i18.LoginUserUsecase(authBloc: gh<_i16.AuthBloc>()));
+    gh.factory<_i17.DisposeSegmentListenerUsecase>(() =>
+        _i17.DisposeSegmentListenerUsecase(
+            segmentBloc: gh<_i12.SegmentBloc>()));
+    gh.factory<_i18.ListenSegmentStreamUsecase>(() =>
+        _i18.ListenSegmentStreamUsecase(segmentBloc: gh<_i12.SegmentBloc>()));
+    gh.lazySingleton<_i19.AuthBloc>(
+        () => _i19.AuthBloc(authRepository: gh<_i15.AuthRepository>()));
+    gh.factory<_i20.ConnectServerUsecase>(
+        () => _i20.ConnectServerUsecase(authBloc: gh<_i19.AuthBloc>()));
+    gh.factory<_i21.LoginUserUsecase>(
+        () => _i21.LoginUserUsecase(authBloc: gh<_i19.AuthBloc>()));
+    gh.factory<_i22.LogoutUserUsecase>(
+        () => _i22.LogoutUserUsecase(authBloc: gh<_i19.AuthBloc>()));
+    gh.factory<_i23.AutoLoginUserUsecase>(
+        () => _i23.AutoLoginUserUsecase(authBloc: gh<_i19.AuthBloc>()));
     return this;
   }
 }
 
-class _$DIContainer extends _i19.DIContainer {}
+class _$DIContainer extends _i24.DIContainer {}
