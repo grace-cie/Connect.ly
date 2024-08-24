@@ -4,9 +4,9 @@ import 'package:connectly/features/authentication/presentation/pages/Home.page.d
 import 'package:connectly/features/authentication/presentation/pages/Initial.page.dart';
 import 'package:connectly/features/authentication/presentation/pages/Login.page.dart';
 import 'package:connectly/features/authentication/presentation/pages/Menu.page.dart';
-import 'package:connectly/features/chat/presentation/pages/Chat.page.dart';
 import 'package:connectly/features/feed/presentation/pages/Feed.page.dart';
 import 'package:connectly/features/notification/presentation/pages/Notification.page.dart';
+import 'package:connectly/features/user/presentation/pages/Chat.page.dart';
 import 'package:flutter/widgets.dart';
 
 part 'app_router.gr.dart';

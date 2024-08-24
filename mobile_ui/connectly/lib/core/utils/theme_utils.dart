@@ -156,7 +156,7 @@ final Map<String, List<dynamic>> theme = <String, List<dynamic>>{
     const CardTheme(
       color: CustomColor.instagramWhite,
     ),
-    CardTheme(
+    const CardTheme(
       color: CustomColor.instagramDarkGrey,
     ),
   ],

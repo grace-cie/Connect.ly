@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:connectly/config.dart';
+import 'package:connectly/dic/injection.dart';
+import 'package:connectly/features/authentication/usecase/logout_user.usecase.dart';
 import 'package:dio_http/dio_http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,12 +20,9 @@ class AuthenticationInterceptor extends Interceptor {
     final String token = getAccessToken();
 
     options.headers[HttpHeaders.contentTypeHeader] = 'application/json';
-    if (options.uri.origin.contains('uptape.app')) {
-      options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
-    }
-
+    options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     isReAuthenticated = false;
-    // printWrapped(token);
+
     return handler.next(options);
   }
 
@@ -34,12 +33,8 @@ class AuthenticationInterceptor extends Interceptor {
   ) {
     // Let device-token errors pass-thru to not kill the app
 
-    if (err.response?.data['message'] == 'jwt expired') {
-      // getIt<LogoutUserUsecase>().execute();
-      // if (!isReAuthenticated) {
-      //   getIt<ReAuthenticateUserUsecase>().execute();
-      //   isReAuthenticated = true;
-      // }
+    if (err.response?.data['message']['message'] == 'jwt expired') {
+      getIt<LogoutUserUsecase>().execute();
     }
 
     if (err.response?.data['errors']?[0]?['detail'] ==

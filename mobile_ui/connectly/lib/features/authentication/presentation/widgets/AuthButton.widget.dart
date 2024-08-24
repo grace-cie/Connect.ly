@@ -1,6 +1,6 @@
 import 'package:connectly/core/utils/custom_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class AuthButtonWidget extends StatelessWidget {
   const AuthButtonWidget({
@@ -43,8 +43,12 @@ class AuthButtonWidget extends StatelessWidget {
           ),
         ),
         child: isLoading
-            ? LoadingAnimationWidget.prograssiveDots(
-                color: CustomColor.instagramWhite, size: 40)
+            ? const CupertinoActivityIndicator(
+                color: CustomColor.instagramWhite,
+              )
+
+            // LoadingAnimationWidget.prograssiveDots(
+            //     color: CustomColor.instagramWhite, size: 40)
             : Text(
                 buttonName,
                 style: const TextStyle(
